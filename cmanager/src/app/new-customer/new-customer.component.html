@@ -1,0 +1,56 @@
+
+<div class="row">
+    <div class="col-md-6">
+        <form #f='ngForm' (ngSubmit)='save(f.value)'>
+            <div class="form-group">
+                <label for="firstName">FirstName</label>
+                <input #firstName="ngModel" [(ngModel)]='person.firstName' name='firstName' id="firstName" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="lastName">LastName</label>
+                <input #lastName="ngModel" [(ngModel)]='person.lastName' name='lastName' id="lastName" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea #address="ngModel" [(ngModel)]='person.address' name='address' id="address" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input #city="ngModel" [(ngModel)]='person.city' name='city' id="city" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input #state="ngModel" [(ngModel)]='person.state' name='state' id="state" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">+91</span>
+                    </div>
+                <input #phone="ngModel" [(ngModel)]='person.phone' name='phone' id="phone" type='number' class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input #email="ngModel" [(ngModel)]='person.email' name='email' id="email" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="imageUrl">Image URL</label>
+                <input #imageUrl="ngModel" [(ngModel)]='person.imageUrl' name='imageUrl' id="imageUrl" type="text" class="form-control">
+            </div>
+            <button type='button' class="btn btn-warning" routerLink=''>Cancel</button>
+            <button class="btn btn-success disabled flt-rt">Save</button>    
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="card" style="width: 18rem;">
+            <img [src]="imageUrl.value" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{firstName.value}} {{lastName.value}}</h5>
+              <p class="card-text">{{email.value}}</p>
+            </div>
+          </div>
+    </div>
+</div>
+

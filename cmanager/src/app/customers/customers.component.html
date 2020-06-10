@@ -1,0 +1,67 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <form class="form-inline my-2 my-lg-0">
+        <label for="filter" class="navbar-brand">Filter by</label> 
+        <select #s (change)='changeFocus(query)' class="custom-select custom-select-md ">
+            <option selected value='firstName'>firstName</option>
+            <option value='lastName'>lastName</option>
+            <option value='address'>address</option>
+            <option value='city'>city</option>
+            <option value='state'>state</option>
+            <option value='email'>email</option>            
+        </select>
+        <input #query (keyup)='filter(query.value,s.value)' id="filter" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <p class="my-2 my-sm-0 " >save for later</p>
+      </form>
+     
+      <a routerLink="/new-customer" class="btn btn-primary form-inline ml-auto">Add Customer</a>
+    </div>
+  </nav>
+
+<!-- <div >
+    
+    <a routerLink="/new-customer" class="btn btn-primary flt-rt">New Customer</a>
+
+    <input 
+    #query
+    (keyup)="filter(query.value)"
+    type="text" class="form-control" placeholder="Search">
+
+</div> -->
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>image</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Address</th>
+            <th>city</th>
+            <th>state</th>
+            <th>phone</th>
+            <th>email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of filteredCustomers">
+            <td><img [src]="customer.imageUrl"  class="img-thumbnail"></td>
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.address}}</td>
+            <td>{{customer.city}}</td>
+            <td>{{customer.state}}</td>
+            <td>{{customer.phone}}</td>
+            <td>{{customer.email}}</td>
+            <td>
+                <a [routerLink]="['/new-customer',customer.firstName,customer.key]">Edit</a>
+                <a routerLink="" (click)='delete(customer.key,customer.firstName)' class='flt-rt'>
+                    <svg class="bi bi-x-circle-fill hover" width="1em" height="1em" viewBox="0 0 16 16" fill="black" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.146-3.146a.5.5 0 0 0-.708-.708L8 7.293 4.854 4.146a.5.5 0 1 0-.708.708L7.293 8l-3.147 3.146a.5.5 0 0 0 .708.708L8 8.707l3.146 3.147a.5.5 0 0 0 .708-.708L8.707 8l3.147-3.146z"/>
+                      </svg>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
