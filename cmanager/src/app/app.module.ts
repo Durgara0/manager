@@ -34,8 +34,8 @@ import { CustBsNavbarComponent } from './cust-bs-navbar/cust-bs-navbar.component
     AngularFireAuthModule,
     RouterModule.forRoot([
       {path:'',component:CustomersComponent},
-      {path:'new-customer/:firstName/:id',component:NewCustomerComponent},
-      {path:'new-customer',component:NewCustomerComponent}
+      {path:'new-customer',component:NewCustomerComponent},
+      {path:'new-customer/:firstName/:id',component:NewCustomerComponent}
     ]),
     NgbModule
   ],

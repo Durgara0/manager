@@ -2,7 +2,8 @@ import { Person } from './../models/customer';
 import { PersonService } from './../person.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {map} from 'rxjs/operators';
+import {map,take} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-new-customer',
@@ -19,10 +20,14 @@ export class NewCustomerComponent implements OnInit {
 
       this.id=this.route.snapshot.paramMap.get('id');
       if(this.id){
-        this.personService.get(this.id).valueChanges().subscribe(x=>{
+        this.personService.get(this.id).valueChanges()
+        .pipe(
+          take(1)
+        ) 
+        .subscribe(x=>{
           this.person=x;
         })
-      }
+      }  
     }
 
   ngOnInit(): void {
